@@ -1,42 +1,57 @@
-const seattle = {
-  name: 'Seattle',
-  minCustomers: 23,
-  maxCustomers: 65,
-  avgCookiesPerSale: 6.3,
-  hourlySales: [],
+'use strict'
+ 
+const hours = [
+  "6am",
+  "7am",
+  "8am",
+  "9am",
+  "10am",
+  "11am",
+  "12pm",
+  "1pm",
+  "2pm",
+  "3pm",
+  "4pm",
+  "5pm",
+  "6pm",
+  "7pm",
+  "8pm"
+]
 
-  // Method to generate random customers and calculate sales
-  generateHourlySales: function () {
-    for (let hour = 6; hour <= 19; hour++) {
-      const customers = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers + 1)) + this.minCustomers;
-      const cookiesSold = Math.round(customers * this.avgCookiesPerSale);
-      this.hourlySales.push(`${hour}am: ${cookiesSold} cookies`);
-    }
-  }
-};
-
-// You can create similar objects for other locations (Tokyo, Dubai, Paris, Lima)
-
-// Call the method to generate sales data
-seattle.generateHourlySales();
-
-// Display the results in HTML
-const seattleList = document.getElementById('seattle-list');
-for (const sale of seattle.hourlySales) {
-  const listItem = document.createElement('li');
-  listItem.textContent = sale;
-  seattleList.appendChild(listItem);
+const Seattle = {
+  location: 'Seattle',
+  lowCust: 23,
+  highCust: 65,
+  cookiesPerCust: 6.3,
 }
 
-// Repeat the above process for other locations and display them in separate lists
-// ...
+custPerHour: [],
 
-// Calculate and display total cookies
-const seattleTotal = seattle.hourlySales.reduce((total, sale) => {
-  const cookies = parseInt(sale.split(':')[1]);
-  return total + cookies;
-}, 0);
+cookiesPerHour: [],
+totalDaily: 0,
 
-const seattleTotalItem = document.createElement('li');
-seattleTotalItem.textContent = `Total: ${seattleTotal} cookies`;
-seattleList.appendChild(seattleTotalItem);
+getCustPerHour: function() {
+  for (let i =0; i < hours.length; i++) {
+    const randomCust= getRandomInt(this.minCust, this.maxCust)
+
+    this.custPerHour.push(randomCust)
+  }
+},
+
+countCookies: function() {
+  for (let i=0; i < custPerHour.length; i++) {
+    const soldCookies = custPerHour[i] * this.cookiesPerCust
+
+    this.cookiesPerHour.push(soldCookies)
+
+    this.totalDaily += soldCookies
+  }
+}
+
+seattle.calcCookies();
+seattle.getCookiesPerHour();
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
