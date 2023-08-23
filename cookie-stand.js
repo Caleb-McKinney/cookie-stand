@@ -48,7 +48,7 @@ countCookies: function() {
   }
 }
 
-seattle.calcCookies();
+seattle.countCookies();
 seattle.getCookiesPerHour();
 
 function getRandomInt(min, max) {
