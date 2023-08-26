@@ -40,3 +40,14 @@ ul {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #006d77;
 }
+
+h1, table {
+  text-align: center;
+  margin: 25px auto;
+  
+}
+
+td, th {
+  border: solid 1px black;
+  padding: 5px;
+}
