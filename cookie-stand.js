@@ -1,22 +1,27 @@
 "use strict";
 
-const hours = [
-  "6am",
-  "7am",
-  "8am",
-  "9am",
-  "10am",
-  "11am",
-  "12pm",
-  "1pm",
-  "2pm",
-  "3pm",
-  "4pm",
-  "5pm",
-  "6pm",
-  "7pm",
-  "8pm",
-];
+const city = {
+
+  
+hours: [
+    "6am",
+    "7am",
+    "8am",
+    "9am",
+    "10am",
+    "11am",
+    "12pm",
+    "1pm",
+    "2pm",
+    "3pm",
+    "4pm",
+    "5pm",
+    "6pm",
+    "7pm",
+    "8pm",
+],
+stores: [],
+}
 
 function renderTableHeader(){
   const tableElm = document.getElementById('cookie-data-table');
@@ -25,9 +30,9 @@ function renderTableHeader(){
   const blankThElem = document.createElement("th");
   headerRow.appendChild(blankThElem);
 
-  for(let i = 0; i < hours.length; i++){
+  for(let i = 0; i < city.hours.length; i++){
     const tdElem = document.createElement('th')
-    tdElem.textContent = hours[i];
+    tdElem.textContent = city.hours[i];
     headerRow.appendChild(tdElem);
   }
 
@@ -42,6 +47,27 @@ function renderTableHeader(){
 renderTableHeader();
 
 
+function renderTableBody(){
+console.log("testForLoops Called")
+let rowArrays = [];
+for (let m = 0; m < city.stores.length; m++){
+rowArrays.push([])
+}
+  for(let j = 0; j < city.hours.length; j++){
+    let currentTime = city.hours[j];
+    let tdElement = document.createElement('td')
+    for(let k = 0; k < city.stores.length; k++){
+      let currentCity = city.stores[k];
+      let currentCityHourSale = currentCity.cookiesPerHour[j];
+      rowArrays[k].push(currentCityHourSale)
+      // console.log(currentCityHourSale);
+      tdElement.textContent = currentCityHourSale
+    }
+  } 
+  console.log(rowArrays);
+}
+
+
 function Store(location, lowCust, highCust, cookiesPerCust) {
   this.location = location;
   this.lowCust = lowCust;
@@ -50,14 +76,14 @@ function Store(location, lowCust, highCust, cookiesPerCust) {
   this.custPerHour = [];
   this.cookiesPerHour = [];
   this.totalDaily = 0;
-
+  
   this.getCustPerHour = function () {
-    for (let i = 0; i < hours.length; i++) {
+    for (let i = 0; i < city.hours.length; i++) {
       const randomCust = getRandomInt(this.lowCust, this.highCust);
       this.custPerHour.push(randomCust);
     }
   };
-
+  
   this.countCookies = function () {
     for (let i = 0; i < this.custPerHour.length; i++) {
       const soldCookies = this.custPerHour[i] * this.cookiesPerCust;
@@ -65,17 +91,17 @@ function Store(location, lowCust, highCust, cookiesPerCust) {
       this.totalDaily += soldCookies;
     }
   };
-
+  
   this.render = function () {
     const salesContainer = document.getElementById("sales");
-
+    
     const headingElement = document.createElement("h2");
     headingElement.textContent = this.location;
     salesContainer.appendChild(headingElement);
 
     let storeList = document.createElement("ul");
-    for (let i = 0; i < hours.length; i++) {
-      let hour = hours[i];
+    for (let i = 0; i < city.hours.length; i++) {
+      let hour = city.hours[i];
       let listItem = document.createElement("li");
       listItem.textContent = `${hour}: ${this.cookiesPerHour[i]} cookies`;
       storeList.appendChild(listItem);
@@ -83,8 +109,8 @@ function Store(location, lowCust, highCust, cookiesPerCust) {
     const dailyTotalElement = document.createElement("li");
     dailyTotalElement.textContent = `Total: ${this.totalDaily.toFixed(
       0
-    )} cookies`;
-    storeList.appendChild(dailyTotalElement);
+      )} cookies`;
+      storeList.appendChild(dailyTotalElement);
     salesContainer.appendChild(storeList);
   };
 
@@ -105,10 +131,15 @@ const tokyoStore = new Store("Tokyo", 3, 24, 1.2);
 const dubaiStore = new Store("Dubai", 11, 38, 3.7);
 const parisStore = new Store("Paris", 20, 38, 2.3);
 const limaStore = new Store("Lima", 2, 16, 4.6);
+city.stores.push(seattleStore)
+city.stores.push(tokyoStore)
+
+renderTableBody();
+
 // renderTableBody();
 
 // const Tokyo = {
-//   location: "Tokyo",
+  //   location: "Tokyo",
 //   lowCust: 3,
 //   highCust: 24,
 //   cookiesPerCust: 1.2,
