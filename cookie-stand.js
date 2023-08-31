@@ -125,6 +125,14 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function renderStores(){
+for (let n = 0; n < city.stores.length; n++){
+  city.stores[n].countCookies[i];
+  city.stores[i].render;
+}
+console.log(city);
+}
+
 // Usage
 const seattleStore = new Store("Seattle", 23, 65, 6.3);
 const tokyoStore = new Store("Tokyo", 3, 24, 1.2);
@@ -133,9 +141,19 @@ const parisStore = new Store("Paris", 20, 38, 2.3);
 const limaStore = new Store("Lima", 2, 16, 4.6);
 city.stores.push(seattleStore)
 city.stores.push(tokyoStore)
+city.stores.push(dubaiStore)
+city.stores.push(parisStore)
+city.stores.push(limaStore)
 
 renderTableBody();
+Store.prototype.render = function(){
+  const rowElement = document.createElement('tr');
+const nameElem = document.createElement('td');
+nameElem.textContent = this.location;
+rowElement.appendChild(nameElem);
 
+  city.tableElm.appendChild(rowElement)
+}
 // renderTableBody();
 
 // const Tokyo = {
