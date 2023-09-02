@@ -7,6 +7,10 @@ header {
   height: 80px;
 }
 
+nav {
+  text-align: center;
+}
+
 /* div {
   background-image: url('/images/plate\ image.png');
 } */
@@ -24,6 +28,7 @@ h1 {
 h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: #e29578;
+  text-align: center;
 }
 
 h4 {
@@ -39,6 +44,7 @@ img {
 ul {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #006d77;
+  text-align: center;
 }
 
 h1, table {
