@@ -7,9 +7,30 @@
     <title>Sales Data</title>
   </head>
   <body>
-    <h1>Sales Data</h1>
-    <h2>Seattle</h2>
-    <ul id="seattle-list"></ul>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="sales.html">Sales</a>
+      </nav>
+    </header>
+    <main>
+      <form id="store-form">
+        <fieldset>
+          <legend>Add New Cookie Store</legend>
+          <label for="location">Location</label>
+          <input type="text" name="location" id="location-input">
+          <label for="lowCust">Low Customers</label>
+          <input type="text" name="lowCust" id="low-customer-input">
+          <label for="highCust">High Customers</label>
+          <input type="text" name="highCust" id="high-customer-input">
+          <label for="cookiePerCust">Cookies Per Customer</label>
+          <input type="text" name="cookiePerCust" id="cookies-per-input">
+          <button type="submit">Send Cookies!</button>
+        </fieldset>
+      </form>
+      <h1>Sales Data</h1>
+      <table id="cookie-data-table"></table>
+    </main>
     <!-- Repeat similar code for other locations -->
     <script src="cookie-stand.js"></script>
   </body>
