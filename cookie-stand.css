@@ -4,7 +4,19 @@ header {
   background-color: #e29578;
   margin: 0%;
   margin-top: 0%;
+  height: 90px;
+  /* background-image: url("/images/Salmon\ Cookie\ Logo.jpg"); */
+}
+
+footer {
+  margin: 0%;
+  /* background-image: url("images/Salmon\ Cookie\ Logo.jpg"); */
   height: 80px;
+  text-align: center;
+  background-color: #c89f9c; 
+}
+div {
+  align-content: flex-end;
 }
 
 nav {
@@ -16,7 +28,8 @@ nav {
 } */
 
 body {
-  background-color: #3d405b;
+  background-image: url("images/Salmon\ Cookie\ Logo.jpg");
+  /* background-color: #3d405b; */
 }
 
 h1 {
@@ -26,7 +39,7 @@ h1 {
 }
 
 h2 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: #e29578;
   text-align: center;
 }
@@ -47,13 +60,15 @@ ul {
   text-align: center;
 }
 
-h1, table {
+h1,
+table {
   text-align: center;
   margin: 25px auto;
-  
 }
 
-table, td, th {
+table,
+td,
+th {
   border: solid 1px black;
   padding: 5px;
 }
